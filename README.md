@@ -33,7 +33,7 @@ improvements.
 Requirements
 ------------
 1.	PHP >= 7.4
-2.	PHP >=8.1 Wrks also for vichan plus
+2.	PHP >=8.1 Works also for vichan plus
 3.	MySQL/MariaDB server
 4.	[mbstring](http://www.php.net/manual/en/mbstring.installation.php) 
 5.	[PHP GD](http://www.php.net/manual/en/intro.image.php)
