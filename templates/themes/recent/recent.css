@@ -20,9 +20,9 @@
 	margin: 0;
 }
 .box.left {
-	background: #efe;
-	color: #060;
-	border: 1px solid #060;
+	background: #eef3ff;
+	color: #0c0066;
+	border: 1px solid #001d66;
 	float: left;
 }
 .box.right {
@@ -37,11 +37,11 @@
 	font-size: 12pt;
 }
 .box.left h2 {
-	background: #9C6;
-	color: #060;
+	background: #6674cc;
+	color: #000566;
 }
 .box.right h2 {
-	background: #59A;
+	background: #6155aa;
 	color: white;
 }
 .box img {
