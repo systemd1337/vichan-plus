@@ -78,3 +78,169 @@ div.post.reply::before {
     position: absolute;
     margin-left: -27px;
 }
+
+/*
+	TODO:
+		Move this font to be locally stored.
+		If privacy is the goal we should not be making any calls to third parties.
+*/
+@import url('https://fonts.cdnfonts.com/css/inconsolata-2');
+
+:root {
+	--other-color: #cfd8f4;
+}
+
+/* Front page */
+body {
+	font-family: 'Inconsolata', monospace;
+}
+
+h1 {
+	font-family: 'Inconsolata', monospace;
+	letter-spacing: 0.2px;
+}
+
+#front-page-logo {
+	max-width: 320px;
+	max-height: 320px;
+	width: 20vw;
+	height: 20vw;
+}
+
+div.container.narrow {
+	margin-top: 15px;
+	background-color: #d6dcf0;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2.barheader {
+	border: 1px solid black;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	background-color: #00000011;
+	padding: 10px;
+	text-align: center;
+}
+
+.box.left,
+.box.right {
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.box > ul,
+.box.left,
+.box.right {
+	background-color: #d6dcf0;
+}
+
+.box.left > h2,
+.box.right > h2 {
+	color: white;
+	text-align: center;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+	background: linear-gradient(to bottom, #6155aa, #4a3f8ade);
+}
+
+.box.left {
+	text-align: center;
+}
+
+a {
+	color: #070796;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #070796;
+}
+
+a:hover {
+	color: red;
+}
+
+/* Boards */
+.image_id {
+	margin-left: 5px;
+}
+
+hr {
+	border-color: black;
+	opacity: 0.0;
+}
+
+div.post.reply {
+	border: 1px solid #d6dcf0;
+	padding-right: 20px;
+}
+
+div.post.reply::before {
+	content: '';
+}
+
+div.post.reply.highlighted {
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+	border: 1px solid red;
+	background-color: #d6dcf0;
+}
+
+.omitted {
+	font-style: italic;
+	opacity: 0.8;
+}
+
+.controls {
+	opacity: 0.2;
+}
+
+.controls:hover {
+	opacity: 1;
+}
+
+span.name {
+	font-weight: bold;
+	color: darkgreen;
+}
+
+span.trip {
+	color: darkgreen;
+	font-weight: normal;
+}
+
+span.quote {
+	color: #005e00;
+}
+
+form > table > tbody > tr > th,
+.banner {
+	background: linear-gradient(to bottom, #6155aa, #4a3f8ade);
+	color: white;
+	font-weight: bold;
+}
+
+.banner {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+header > h1 {
+	font-weight: bold;
+}
+
+div.pages.top {
+	margin-top: 20px;
+	padding: 0px;
+	padding-left: 2px;
+	padding-right: 2px;
+	background-color: #cfd8f4;
+	border: 1px solid black;
+}
+
+/* Moderation panel */
+fieldset {
+	background-color: #d6dcf0;
+	border: 1px solid black;
+}
+
+fieldset > legend {
+	font-weight: bold;
+}
