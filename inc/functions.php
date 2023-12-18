@@ -207,8 +207,6 @@ function loadConfig() {
 			$config['image_bumplocked'] = $config['dir']['static'] . 'sage.gif';
 		if (!isset($config['image_deleted']))
 			$config['image_deleted'] = $config['dir']['static'] . 'deleted.png';
-		if (!isset($config['image_cyclical']))
-			$config['image_cyclical'] = $config['dir']['static'] . 'cycle.png';
 
 		if (isset($board)) {
 			if (!isset($config['uri_thumb']))
@@ -521,7 +519,6 @@ function setupBoard($array) {
 		'uri' => $array['uri'],
 		'title' => $array['title'],
 		'subtitle' => $array['subtitle'],
-		#'indexed' => $array['indexed'],
 	);
 
 	// older versions
@@ -530,6 +527,9 @@ function setupBoard($array) {
 	$board['dir'] = sprintf($config['board_path'], $board['uri']);
 	$board['url'] = sprintf($config['board_abbreviation'], $board['uri']);
 
+// Obtener la URL del logo
+$logoPath = 'templates/themes/recent/icons/' . $board['uri'] . '_icon_64.png';
+$board['logoUrl'] = file_exists($logoPath) ? $logoPath : null;
 	loadConfig();
 
 	if (!file_exists($board['dir']))
@@ -1723,14 +1723,14 @@ function checkSpam(array $extra_salt = array()) {
 	$_hash = sha1($_hash . $extra_salt);
 
 	if ($hash != $_hash)
-		return true;
+		return false;
 
 	$query = prepare('SELECT `passed` FROM ``antispam`` WHERE `hash` = :hash');
 	$query->bindValue(':hash', $hash);
 	$query->execute() or error(db_error($query));
 	if ((($passed = $query->fetchColumn(0)) === false) || ($passed > $config['spam']['hidden_inputs_max_pass'])) {
 		// there was no database entry for this hash. most likely expired.
-		return true;
+		return false;
 	}
 
 	return $hash;
@@ -2088,7 +2088,7 @@ function markup(&$body, $track_cites = false, $op = false) {
 	$tracked_cites = array();
 
 	// Cites
-	if (isset($board) && preg_match_all('/(^|[\s(])&gt;&gt;(\d+?)((?=[\s,.)?!])|$)/m', $body, $cites, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
+	if (isset($board) && preg_match_all('/(^|\s)&gt;&gt;(\d+?)((?=[\s,.)?!])|$)/m', $body, $cites, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
 		if (count($cites[0]) > $config['max_cites']) {
 			error($config['error']['toomanycites']);
 		}
@@ -2135,7 +2135,7 @@ function markup(&$body, $track_cites = false, $op = false) {
 	}
 
 	// Cross-board linking
-	if (preg_match_all('/(^|[\s(])&gt;&gt;&gt;\/(' . $config['board_regex'] . 'f?)\/(\d+)?((?=[\s,.)?!])|$)/um', $body, $cites, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
+	if (preg_match_all('/(^|\s)&gt;&gt;&gt;\/(' . $config['board_regex'] . 'f?)\/(\d+)?((?=[\s,.)?!])|$)/um', $body, $cites, PREG_SET_ORDER | PREG_OFFSET_CAPTURE)) {
 		if (count($cites[0]) > $config['max_cites']) {
 			error($config['error']['toomanycross']);
 		}
@@ -2242,6 +2242,8 @@ function markup(&$body, $track_cites = false, $op = false) {
 	$tracked_cites = array_unique($tracked_cites, SORT_REGULAR);
 
 	$body = preg_replace("/^\s*&gt;.*$/m", '<span class="quote">$0</span>', $body);
+	$body = preg_replace("/^\s*&lt;.*$/m", '<span class="quoteRed">$0</span>', $body);
+
 
 	if ($config['strip_superfluous_returns'])
 		$body = preg_replace('/\s+$/', '', $body);
@@ -2305,7 +2307,7 @@ function defined_flags_accumulate($desired_flags) {
 }
 
 function utf8tohtml($utf8) {
-	$flags = defined_flags_accumulate(['ENT_NOQUOTES', 'ENT_SUBSTITUTE', 'ENT_DISALLOWED']);
+	$flags = defined_flags_accumulate(['ENT_QUOTES', 'ENT_SUBSTITUTE', 'ENT_DISALLOWED']);
 	return htmlspecialchars($utf8, $flags, 'UTF-8');
 }
 
@@ -2332,11 +2334,19 @@ function ordutf8($string, &$offset) {
 	return $code;
 }
 
-// Limit Non_Spacing_Mark and Enclosing_Mark characters
 function strip_combining_chars($str) {
-	global $config;
-	$limit = strval($config['max_combining_chars']+1);
-	return preg_replace('/(\p{Me}|\p{Mn}){'.$limit.',}/u','', $str);
+	$chars = preg_split('//u', $str, -1, PREG_SPLIT_NO_EMPTY);
+	$str = '';
+	foreach ($chars as $char) {
+		$o = 0;
+		$ord = ordutf8($char, $o);
+
+		if ( ($ord >= 768 && $ord <= 879) || ($ord >= 1536 && $ord <= 1791) || ($ord >= 3655 && $ord <= 3659) || ($ord >= 7616 && $ord <= 7679) || ($ord >= 8400 && $ord <= 8447) || ($ord >= 65056 && $ord <= 65071))
+			continue;
+
+		$str .= $char;
+	}
+	return $str;
 }
 
 function buildThread($id, $return = false, $mod = false) {
@@ -2715,57 +2725,33 @@ function shell_exec_error($command, $suppress_stdout = false) {
  */
 function diceRoller($post) {
 	global $config;
-	if(strpos(strtolower($post->email), 'dice%20') === 0) {
-		$dicestr = str_split(substr($post->email, strlen('dice%20')));
 
-		// Get params
-		$diceX = '';
-		$diceY = '';
-		$diceZ = '';
+	if (isset($_POST['d100Checkbox'])) {
+		$roll = rand(1, 100);
+		$post->body = '<div class="diceroll"><img src="'.$config['dir']['static'].'dado.png" alt="" width="12"><strong> = ' . $roll . '</strong></div><br/>' . $post->body;
+	} else {
+		$dadoField = isset($_POST['dadoField']) ? trim($_POST['dadoField']) : '';
+		if (preg_match('/^(dado\s+)?(\d+)?d(\d+)([+-]\d+)?$/', strtolower($dadoField), $matches)) {
+			$diceX = isset($matches[2]) ? intval($matches[2]) : 1;
+			$diceY = intval($matches[3]);
+			$diceZ = isset($matches[4]) ? intval($matches[4]) : 0;
 
-		$curd = 'diceX';
-		for($i = 0; $i < count($dicestr); $i ++) {
-			if(is_numeric($dicestr[$i])) {
-				$$curd .= $dicestr[$i];
-			} else if($dicestr[$i] == 'd') {
-				$curd = 'diceY';
-			} else if($dicestr[$i] == '-' || $dicestr[$i] == '+') {
-				$curd = 'diceZ';
-				$$curd = $dicestr[$i];
-			}
-		}
-
-		// Default values for X and Z
-		if($diceX == '') {
-			$diceX = '1';
-		}
-
-		if($diceZ == '') {
-			$diceZ = '+0';
-		}
-
-		// Intify them
-		$diceX = intval($diceX);
-		$diceY = intval($diceY);
-		$diceZ = intval($diceZ);
-
-		// Continue only if we have valid values
-		if($diceX > 0 && $diceY > 0) {
 			$dicerolls = array();
 			$dicesum = $diceZ;
-			for($i = 0; $i < $diceX; $i++) {
+			for ($i = 0; $i < $diceX; $i++) {
 				$roll = rand(1, $diceY);
 				$dicerolls[] = $roll;
 				$dicesum += $roll;
 			}
 
-			// Prepend the result to the post body
 			$modifier = ($diceZ != 0) ? ((($diceZ < 0) ? ' - ' : ' + ') . abs($diceZ)) : '';
-			$dicesum = ($diceX > 1) ? ' = ' . $dicesum : '';
-			$post->body = '<table class="diceroll"><tr><td><img src="'.$config['dir']['static'].'d10.svg" alt="Dice roll" width="24"></td><td>Rolled ' . implode(', ', $dicerolls) . $modifier . $dicesum . '</td></tr></table><br/>' . $post->body;
+			$dicesumText = ($diceX > 1) ? ' = ' . $dicesum : '';
+
+			$post->body = '<div class="diceroll"><img src="'.$config['dir']['static'].'dado.png" alt="" width="12"><strong> = ' . implode(', ', $dicerolls) . $modifier . $dicesumText . '</strong></div><br/>' . $post->body;
 		}
 	}
 }
+
 
 function slugify($post) {
 	global $config;
@@ -3008,7 +2994,7 @@ function cloak_ip($ip) {
 	if (strlen($ipbytes) >= 16)
 		$ipbytes = substr($ipbytes, 0, 16);
 
-	$cyphertext = openssl_encrypt($ipbytes, 'aes-256-ctr', $ipcrypt_key, OPENSSL_RAW_DATA);
+	$cyphertext = openssl_encrypt($ipbytes, 'rc4-40', $ipcrypt_key, OPENSSL_RAW_DATA);
 
 	$ret = $config['ipcrypt_prefix'].':' . base32_encode($cyphertext);
 	if (isset($tld) && !empty($tld)) {
@@ -3031,7 +3017,7 @@ function uncloak_ip($ip) {
 	}
 
 	if (substr($ip, 0, strlen($config['ipcrypt_prefix']) + 1) === $config['ipcrypt_prefix'].':') {
-		$plaintext = openssl_decrypt(base32_decode($juice), 'aes-256-ctr', $ipcrypt_key, OPENSSL_RAW_DATA);
+		$plaintext = openssl_decrypt(base32_decode($juice), 'rc4-40', $ipcrypt_key, OPENSSL_RAW_DATA);
 
 		if ($plaintext === false || strlen($plaintext) == 0)
 			return '#ERROR';
@@ -3066,17 +3052,4 @@ function uncloak_mask($mask) {
 	}
 
 	return $mask;
-}
-
-function check_thread_limit($post) {
-	global $config, $board;
-	if (!isset($config['max_threads_per_hour']) || !$config['max_threads_per_hour']) return false;
-
-	if ($post['op']) {
-		$query = prepare(sprintf('SELECT COUNT(*) AS `count` FROM ``posts_%s`` WHERE `thread` IS NULL AND FROM_UNIXTIME(`time`) > DATE_SUB(NOW(), INTERVAL 1 HOUR);', $board['uri']));
-		$query->execute() or error(db_error($query));
-		$r = $query->fetch(PDO::FETCH_ASSOC);
-
-		return $r['count'] >= $config['max_threads_per_hour'];
-	}
 }
