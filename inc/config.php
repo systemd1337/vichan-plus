@@ -496,7 +496,7 @@
  */
 
 	// Do you need a body for your reply posts?
-	$config['force_body'] = true;
+	$config['force_body'] = false;
 	// Do you need a body for new threads?
 	$config['force_body_op'] = true;
 	// Require an image for threads?
@@ -575,7 +575,7 @@
 	
 	// Allow "uploading" images via URL as well. Users can enter the URL of the image and then vichan will
 	// download it. Not usually recommended.
-	$config['allow_upload_by_url'] = false;
+	$config['allow_upload_by_url'] = true;
 	// The timeout for the above, in seconds.
 	$config['upload_by_url_timeout'] = 15;
 
@@ -596,7 +596,7 @@
 	// $config['wordfilters'][] = array('/ca[rt]/', 'dog', true); // 'true' means it's a regular expression
 
 	// Always act as if the user had typed "noko" into the email field.
-	$config['always_noko'] = false;
+	$config['always_noko'] = true;
 
 	// Example: Custom tripcodes. The below example makes a tripcode of "#test123" evaluate to "!HelloWorld".
 	// $config['custom_tripcode']['#test123'] = '!HelloWorld';
@@ -605,7 +605,7 @@
 
 	// Allow users to mark their image as a "spoiler" when posting. The thumbnail will be replaced with a
 	// static spoiler image instead (see $config['spoiler_image']).
-	$config['spoiler_images'] = false;
+	$config['spoiler_images'] = true;
 
 	// With the following, you can disable certain superfluous fields or enable "forced anonymous".
 
@@ -621,7 +621,7 @@
 	$config['field_disable_password'] = false;
 
 	// When true, users are instead presented a selectbox for email. Contains, blank, noko and sage.
-	$config['field_email_selectbox'] = false;
+	$config['field_email_selectbox'] = true;
 
 	// When true, the sage won't be displayed
 	$config['hide_sage'] = false;
@@ -674,14 +674,14 @@
 	$config['require_ban_view'] = true;
 
 	// Show the post the user was banned for on the "You are banned" page.
-	$config['ban_show_post'] = false;
+	$config['ban_show_post'] = true;
 
 	// Optional HTML to append to "You are banned" pages. For example, you could include instructions and/or
 	// a link to an email address or IRC chat room to appeal the ban.
 	$config['ban_page_extra'] = '';
 
 	// Allow users to appeal bans through vichan.
-	$config['ban_appeals'] = false;
+	$config['ban_appeals'] = true;
 
 	// Do not allow users to appeal bans that are shorter than this length (in seconds).
 	$config['ban_appeals_min_length'] = 60 * 60 * 6; // 6 hours
@@ -731,8 +731,8 @@
  */
 	// Maximum number of images allowed. Increasing this number enabled multi image.
 	// If you make it more than 1, make sure to enable the below script for the post form to change.
-	// $config['additional_javascript'][] = 'js/multi-image.js';
-	$config['max_images'] = 1;
+	 $config['additional_javascript'][] = 'js/multi-image.js';
+	$config['max_images'] = 3;
 
 	// Method to use for determing the max filesize. 
 	// "split" means that your max filesize is split between the images. For example, if your max filesize
@@ -870,14 +870,14 @@
 	$config['show_filename'] = true;
 
 	// WebM Settings
-	$config['webm']['use_ffmpeg'] = false;
-	$config['webm']['allow_audio'] = false;
-	$config['webm']['max_length'] = 120;
+	$config['webm']['use_ffmpeg'] = true;
+	$config['webm']['allow_audio'] = true;
+	$config['webm']['max_length'] = 1200000;
 	$config['webm']['ffmpeg_path'] = 'ffmpeg';
 	$config['webm']['ffprobe_path'] = 'ffprobe';
 
 	// Display image identification links for ImgOps, regex.info/exif, Google Images and iqdb.
-	$config['image_identification'] = false;
+	$config['image_identification'] = true;
 	// Which of the identification links to display. Only works if $config['image_identification'] is true.
 	$config['image_identification_imgops'] = true;
 	$config['image_identification_exif'] = true;
@@ -959,7 +959,7 @@
 	// Assign each poster in a thread a unique ID, shown by "ID: xxxxx" before the post number.
 	$config['poster_ids'] = false;
 	// Number of characters in the poster ID (maximum is 40).
-	$config['poster_id_length'] = 5;
+	$config['poster_id_length'] = 6;
 
 	// Show thread subject in page title.
 	$config['thread_subject_in_title'] = false;
@@ -973,7 +973,7 @@
 	// Banner settings.
 	// Banners are rotating, random images displayed to users at the top of thread pages and the catalog.
 	// You should upload your banners to static/banners.
-	$config['url_banner'] = '/b.php';	// Custom script may be used.
+	$config['url_banner'] = '/banner.php';	// Custom script may be used.
 	// Setting the banner dimensions stops the page shifting as it loads. If you have banners of various different sizes, unset these.
 	$config['banner_width'] = 300;
 	$config['banner_height'] = 100;
@@ -982,14 +982,14 @@
 	// available stylesheets (or create your own).
 	$config['stylesheets']['Yotsuba B'] = ''; // Default; there is no additional/custom stylesheet for this.
 	$config['stylesheets']['Yotsuba'] = 'yotsuba.css';
-	// $config['stylesheets']['Futaba'] = 'futaba.css';
-	// $config['stylesheets']['Dark'] = 'dark.css';
+	 $config['stylesheets']['Futaba'] = 'futaba.css';
+	 $config['stylesheets']['Mio'] = 'mio.css';
 
 	// The prefix for each stylesheet URI. Defaults to $config['root']/stylesheets/
 	// $config['uri_stylesheets'] = 'http://static.example.org/stylesheets/';
 
 	// The default stylesheet to use.
-	$config['default_stylesheet'] = array('Yotsuba B', $config['stylesheets']['Yotsuba B']);
+	$config['default_stylesheet'] = array('Mio', $config['stylesheets']['Mio']);
 
 	// Make stylesheet selections board-specific.
 	$config['stylesheets_board'] = false;
@@ -1009,19 +1009,19 @@
 	 * with groups. Each array() in $config['boards'] represents a new square bracket group.
 	 */
 
-	// $config['boards'] = array(
-	// 	array('a', 'b'),
+	 $config['boards'] = array(
+	 	array('devel', 'b'),
 	// 	array('c', 'd', 'e', 'f', 'g'),
 	// 	array('h', 'i', 'j'),
 	// 	array('k', array('l', 'm')),
 	// 	array('status' => 'http://status.example.org/')
-	// );
+	 );
 
 	// Whether or not to put brackets around the whole board list
 	$config['boardlist_wrap_bracket'] = false;
 
 	// Show page navigation links at the top as well.
-	$config['page_nav_top'] = false;
+	$config['page_nav_top'] = true;
 
 	// Show "Catalog" link in page navigation. Use with the Catalog theme. Set to false to disable.
 	$config['catalog_link'] = 'catalog.html';
@@ -1081,9 +1081,9 @@
 	// $config['additional_javascript'] = array();
 	// $config['additional_javascript'][] = 'js/jquery.min.js';
 	// $config['additional_javascript'][] = 'js/inline-expanding.js';
-	// $config['additional_javascript'][] = 'js/auto-reload.js';
+	 $config['additional_javascript'][] = 'js/auto-reload.js';
 	// $config['additional_javascript'][] = 'js/post-hover.js';
-	// $config['additional_javascript'][] = 'js/style-select.js';
+	 $config['additional_javascript'][] = 'js/style-select.js';
 	// $config['additional_javascript'][] = 'js/captcha.js';
 
 	// Where these script files are located on the web. Defaults to $config['root'].
@@ -1106,7 +1106,7 @@
  */
 
 	// Enable embedding (see below).
-	$config['enable_embedding'] = false;
+	$config['enable_embedding'] = true;
 
 	// Custom embedding (YouTube, vimeo, etc.)
 	// It's very important that you match the entire input (with ^ and $) or things will not work correctly.
@@ -1478,11 +1478,11 @@
 	//);
 
 	// "## Admin" makes everything red and bold, including the name and tripcode:
-	//$config['custom_capcode']['Admin'] = array(
-	//	'<span class="capcode" style="color:red;font-weight:bold"> ## %s</span>',
-	//	'color:red;font-weight:bold', // Change name style; optional
-	//	'color:red;font-weight:bold' // Change tripcode style; optional
-	//);
+	$config['custom_capcode']['Admin'] = array(
+		'<span class="capcode" style="color:red;font-weight:bold"> ## %s</span>',
+		'color:red;font-weight:bold', // Change name style; optional
+		'color:red;font-weight:bold' // Change tripcode style; optional
+	);
 
 	// Enable the moving of single replies
 	$config['move_replies'] = false;
