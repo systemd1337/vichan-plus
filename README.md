@@ -20,7 +20,7 @@ vichan is a fork of (now defunc'd) [Tinyboard](http://github.com/savetheinternet
 a great imageboard package, actively building on it and adding a lot of features and other
 improvements.
 
-![](static/doc/timeline.svg)
+![](https://imoutochan.online/static/logo.png)
 
 ### Maintainer timeline
 1. [@perdedora](https://github.com/perdedora) and [@RealAngeleno](https://github.com/RealAngeleno) - 2023-Present.
