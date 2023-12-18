@@ -513,7 +513,7 @@
 	// Maximum numbers of threads that can be created every hour on a board.
 	$config['max_threads_per_hour'] = 30;
 	// Maximum post body length.
-	$config['max_body'] = 1800;
+	$config['max_body'] = 6000;
 	// Maximum number of lines allowed in a post.
 	$config['maximum_lines'] = 100;
 	// Maximum number of post body lines to show on the index page.
@@ -710,7 +710,8 @@
 	$config['markup'][] = array("/^[ |\t]*==(.+?)==[ |\t]*$/m", "<span class=\"heading\">\$1</span>");
 	$config['markup'][] = array("/^[ |\t]*=(.+?)=[ |\t]*$/m", "<span class=\"heading rainbow\">\$1</span>");
 	$config['markup'][] = array("/\[math\](.*?)\[\/math\]/", "<span class=\"equation\">\\[ \$1 \\]</span>");
- 
+  $config['markup'][] = array("/\(\(\((.+?)\)\)\)/", "<font style='background:#faf8f8;color:#3060a8'>(((\$1)))</font>");
+ $config['markup'][] = array("/\[rainbow\](.+?)\[\/rainbow\]/", "<span class='rainbow'>\$1</span>");
 	// \[ \hat{g}(f) = \int_{-\infty}^{\infty} g(x) e^{2 \pi i x f} \, dx \]
 	// Code markup. This should be set to a regular expression, using tags you want to use. Examples:
 	// "/\[code\](.*?)\[\/code\]/is"
@@ -1092,7 +1093,7 @@
 	 $config['additional_javascript'][] = 'js/auto-reload.js';
 	// $config['additional_javascript'][] = 'js/post-hover.js';
 	 $config['additional_javascript'][] = 'js/style-select.js';
-	// $config['additional_javascript'][] = 'js/captcha.js';
+	 $config['additional_javascript'][] = 'js/charcount.js';
 
 	// Where these script files are located on the web. Defaults to $config['root'].
 	// $config['additional_javascript_url'] = 'http://static.example.org/vichan-javascript-stuff/';
