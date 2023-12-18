@@ -36,6 +36,7 @@
 					{% if not config.always_noko %}<option value="noko">noko</option>{% endif %}
 					{% if config.always_noko %}<option value="nonoko">nonoko</option>{% endif %}
 				</select>
+        				<input style="margin-left: 23px;" type="checkbox" id="d100Checkbox" name="d100Checkbox" onchange="toggleTextField()"> Roll Dice
 				{% else %}
 				<input type="text" name="email" size="25" maxlength="40" autocomplete="off">
 				{% endif %}
@@ -62,9 +63,46 @@
 				{% trans %}Comment{% endtrans %}
 				{{ antibot.html() }}
 			</th>
+ 
 			<td>
-								<textarea name="body" id="body" rows="3" cols="40"></textarea>
+											  <textarea name="body" placeholder="Post comment :^)" id="body" rows="5" cols="35" style="font-family: Inter;display: block;line-height: inherit;height: 106px;width: 340px;font-family: Arial,Helvetica,sans-serif;" spellcheck="false" data-ms-editor="true"></textarea>
 				{{ antibot.html() }}
+        
+        
+        
+        
+        
+        
+        
+        			  <input type="button" name="b" value="Bold" onclick="this.form.body.value=this.form.body.value.concat('[b][/b]');">
+			  <div style="display:none;"></div>
+			  
+			  <input type="button" name="i" value="Italic" onclick="this.form.body.value=this.form.body.value.concat('[i][/i]');">
+			  <div style="display:none;"></div>
+			  
+			  <input type="button" name="spoiler" value="Spoiler" onclick="this.form.body.value=this.form.body.value.concat('[spoiler][/spoiler]');">
+			  <div style="display:none;"></div>
+			  
+			  <input type="button" name="pre" value="Pre" onclick="this.form.body.value=this.form.body.value.concat('[pre][/pre]');">
+			  <div style="display:none;"></div>
+			  
+			  <input type="button" name="strike" value="Strike" onclick="this.form.body.value=this.form.body.value.concat('[s][/s]');">
+			  <div style="display:none;"></div>
+			  
+			  <input type="button" name="super" value="Super" onclick="this.form.body.value=this.form.body.value.concat('[super][/super]');">
+			  <div style="display:none;"></div>
+			  
+			  <input type="button" name="sub" value="Sub" onclick="this.form.body.value=this.form.body.value.concat('[sub][/sub]');">
+			  <div style="display:none;"></div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
 				{% if not (not (config.field_disable_subject or (id and config.field_disable_reply_subject)) or (mod and post.mod|hasPermission(config.mod.bypass_field_disable, board.uri))) %}
 				{% if not (not config.field_disable_email or (mod and post.mod|hasPermission(config.mod.bypass_field_disable, board.uri))) %}
 				<input accesskey="s" style="margin-left:2px;" type="submit" name="post" value="{% if id %}{{ config.button_reply }}{% else %}{{ config.button_newtopic }}{% endif %}" />{% if config.spoiler_images %} <input id="spoiler" name="spoiler" type="checkbox"> <label for="spoiler">{% trans %}Spoiler Image{% endtrans %}</label>{% endif %}
