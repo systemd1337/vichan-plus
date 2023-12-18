@@ -1,0 +1,80 @@
+body {background: #eef3ff url('') repeat-x 50% 0%;}
+
+div.banner {background-color:#4173b5;}
+
+form table tr th {
+	background: #6894ff;
+	color:#041;
+	border-color:#041;
+}
+
+div.post.reply {
+	background-color:#d6dcf0;
+	border-color:#3F51B5;
+}
+
+div.post.reply.highlighted {
+	background-color:#d6d0ba;
+	border-color:#3F51B5;
+}
+
+hr, img.banner, img.board_image {border-color:#C1D9B7;}
+
+.intro span.name {color:#458671;}
+.intro a.email span.name {color:#6e9b8d;}
+.intro span.subject {color:#000;}
+
+a, a:visited {color: #36335b;}
+a:hover {color:#e04000;}
+
+div.boardlist, div.pages {
+	color: #3F51B5;
+}
+div.pages {
+	background: #3F51B5;
+	border-right-color:#673AB7;
+	border-bottom-color:#3F51B5;
+}
+span.quote{color:#3F51B5;}
+
+
+div.pages {background: #3f51b512;border: none;font-size: 0pt;}
+
+div.pages form input {display: none;}
+
+div.pages a {font-size: 10pt;text-decoration: none;margin-left: -1px;line-height: 1.6;position: relative;float: left;
+
+background: #3f51b557;color: var(--a1-color);border-radius: 3px;border: 1px solid var(--other-color);padding: 5px 15px;margin: 2px;}
+
+div.pages a.selected, div.pages a.selected:hover {transition: all 0.1s;border: 0;color: var(--replyborder-color) !important;border: 1px solid var(--replyborder-color);background: var(--body-color);pointer-events: none;}
+
+div.pages a:hover {opacity: 1;transition: all 0.1s;color: var(--a2-color) !important;border: 1px solid var(--other-color);background: var(--body-color);}
+
+
+.desktop-style div.boardlist:not(.bottom), .desktop-style div.boardlist:not(.bottom):hover, .desktop-style div.boardlist:not(.bottom).cb-menu {
+
+position: fixed;text-align: center;left: 0;right: 0;margin: auto;z-index: 4;line-height: 1em;
+
+background: var(--other-color);
+
+color:black;
+
+box-shadow: 0;
+
+font-size: 16px;
+
+height: 20px;
+
+}
+
+div.boardlist.bottom {display: none;}
+
+div.boardlist a {color: var(--a3-color);background-color: transparent;}
+
+
+
+div.post.reply::before {
+    content: ">>";
+    position: absolute;
+    margin-left: -27px;
+}
