@@ -14,8 +14,8 @@
 	</label>
 	{% apply spaceless %}
 	{% include 'post/poster_id.html' %}&nbsp;
-	<a class="post_no" id="post_no_{{ post.id }}" onclick="highlightReply({{ post.id }})" href="{% if isnoko50 %}{{ post.link('', '50') }}{% else %}{{ post.link }}{% endif %}">No.</a>
-	<a class="post_no" onclick="citeReply({{ post.id }})" href="{% if isnoko50 %}{{ post.link('q', '50') }}{% else %}{{ post.link('q') }}{% endif %}">{{ post.id }}</a>
+<a class="post_no" >No. {{ post.id }}</a>
+				<a class="fg-button ui-state-default fg-button-icon-left ui-corner-all buttonReply" onclick="citeReply({{ post.id }})" href="{% if isnoko50 %}{{ post.link('q', '50') }}{% else %}{{ post.link('q') }}{% endif %}"> <span class=""></span>[ Respond Quickly ]</a>
 	</p>
 	{% endapply %}
     {% include 'post/fileinfo.html' %} 
@@ -30,3 +30,4 @@
 </div>
 <br/>
 {% endapply %}
+
