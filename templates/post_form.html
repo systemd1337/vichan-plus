@@ -63,7 +63,7 @@
 				{{ antibot.html() }}
 			</th>
 			<td>
-				<textarea name="body" id="body" rows="5" cols="35"></textarea>
+								<textarea name="body" id="body" rows="3" cols="40"></textarea>
 				{{ antibot.html() }}
 				{% if not (not (config.field_disable_subject or (id and config.field_disable_reply_subject)) or (mod and post.mod|hasPermission(config.mod.bypass_field_disable, board.uri))) %}
 				{% if not (not config.field_disable_email or (mod and post.mod|hasPermission(config.mod.bypass_field_disable, board.uri))) %}
@@ -205,6 +205,9 @@
 		</tr>
 		{% endif %}
 		{% if not config.field_disable_password or (mod and post.mod|hasPermission(config.mod.bypass_field_disable, board.uri)) %}<tr>
+
+
+   
 			<th>
 				{% trans %}Password{% endtrans %}
 				{{ antibot.html() }}
@@ -214,7 +217,37 @@
 				<span class="unimportant">{% trans %}(For file deletion.){% endtrans %}</span>
 				{{ antibot.html() }}
 			</td>
+      
+  
+      
+      
 		</tr>{% endif %}
+   
+   
+   
+   
+   <td colspan="2">
+				<p class="unimportant board-settings">
+				{% if not config.disable_images %}
+				{% trans %}Allowed file types:{% endtrans %} <span class="uppercase">
+				{% if config.allowed_ext_op and not id %}
+					{{ config.allowed_ext_op|join(', ') }}
+				{% else %}
+					{{ config.allowed_ext|join(', ') }}{% if config.allowed_ext_files %}, {{ config.allowed_ext_files|join(', ') }}{% endif %}
+				</span>{% endif %}<br />
+				{% trans %}Max filesize is{% endtrans %} {{ config.max_filesize|filesize }}.<br />
+				{% trans %}Max image dimensions are{% endtrans %} {{ config.max_height }} x {{ config.max_width }}.<br />
+				{% set max_images = config.max_images %} {# workaround for "The text to be translated with "trans" can only contain references to simple variables" #}
+				{% trans %}You may upload {{ max_images }} per post.{% endtrans %}<br />
+				{% endif %}
+				</p>
+			</td>
+   
+   
+   
+   
+   
+   		<tr><td colspan=2><span name='markup-hint' style='font-size:10px'>Markup tags exist for bold, itallics, header, spoiler etc. as listed in " [options] > View Formatting "</span></td></tr>
 	</table>
 {{ antibot.html(true) }}
 <input type="hidden" name="hash" value="{{ antibot.hash() }}">
