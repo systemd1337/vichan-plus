@@ -699,11 +699,19 @@
  */
 
 	// "Wiki" markup syntax ($config['wiki_markup'] in pervious versions):
-	$config['markup'][] = array("/'''(.+?)'''/", "<strong>\$1</strong>");
-	$config['markup'][] = array("/''(.+?)''/", "<em>\$1</em>");
+		$config['markup'][] = array("/~~(.*?)~~/", "<s>$1</s>");
+	$config['markup'][] = array("/__(.*?)__/", "<u>$1</u>");
+	$config['markup'][] = array("/\[b\](.*?)\[\/b\]/", "<strong>$1</strong>");
+	$config['markup'][] = array("/\[i\](.*?)\[\/i\]/", "<em>$1</em>");
+	$config['markup'][] = array("/\[code\](.*?)\[\/code\]/", "<code>$1</code>");
+	$config['markup'][] = array("/\[mark\](.*?)\[\/mark\]/", "<mark>$1</mark>");
+	$config['markup'][] = array("/&lt;3/", "&hearts;"); 
 	$config['markup'][] = array("/\*\*(.+?)\*\*/", "<span class=\"spoiler\">\$1</span>");
 	$config['markup'][] = array("/^[ |\t]*==(.+?)==[ |\t]*$/m", "<span class=\"heading\">\$1</span>");
-
+	$config['markup'][] = array("/^[ |\t]*=(.+?)=[ |\t]*$/m", "<span class=\"heading rainbow\">\$1</span>");
+	$config['markup'][] = array("/\[math\](.*?)\[\/math\]/", "<span class=\"equation\">\\[ \$1 \\]</span>");
+ 
+	// \[ \hat{g}(f) = \int_{-\infty}^{\infty} g(x) e^{2 \pi i x f} \, dx \]
 	// Code markup. This should be set to a regular expression, using tags you want to use. Examples:
 	// "/\[code\](.*?)\[\/code\]/is"
 	// "/```([a-z0-9-]{0,20})\n(.*?)\n?```\n?/s"
@@ -1471,11 +1479,11 @@
 	//$config['custom_capcode']['Custom'] ='<span class="capcode" style="color:lightgreen;font-style:italic;font-weight:bold"> ## %s</span>';
 
 	// "## Mod" makes everything purple, including the name and tripcode:
-	//$config['custom_capcode']['Mod'] = array(
-	//	'<span class="capcode" style="color:purple"> ## %s</span>',
-	//	'color:purple', // Change name style; optional
-	//	'color:purple' // Change tripcode style; optional
-	//);
+	$config['custom_capcode']['Mod'] = array(
+		'<span class="capcode" style="color:purple"> ## %s</span>',
+		'color:purple', // Change name style; optional
+		'color:purple' // Change tripcode style; optional
+	);
 
 	// "## Admin" makes everything red and bold, including the name and tripcode:
 	$config['custom_capcode']['Admin'] = array(
