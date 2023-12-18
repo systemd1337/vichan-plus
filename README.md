@@ -1,4 +1,4 @@
-vichan - A lightweight and full featured PHP imageboard.
+vichan plus - A lightweight and full featured PHP imageboard.
 ========================================================
 
 **Please do not contact Fredrick Brennan in regards to vichan issues.**
@@ -21,14 +21,6 @@ a great imageboard package, actively building on it and adding a lot of features
 improvements.
 
 ![](https://imoutochan.online/static/logo.png)
-
-### Maintainer timeline
-1. [@perdedora](https://github.com/perdedora) and [@RealAngeleno](https://github.com/RealAngeleno) - 2023-Present.
-2. Development Commission lead by [@basedgentoo](https://github.com/basedgentoo), [@kuz-sysadmin](https://github.com/kuz-sysadmin), and [@RealAngeleno](https://github.com/RealAngeleno). (2023 - 2023)
-3. [@h00j](https://github.com/h00j) (2021 - ???)
-4. [@ctrlcctrlv](https://github.com/ctrlcctrlv) (2017 - 2021)
-5. [@czaks](https://github.com/czaks) (2014 - 2017) (The author of vichan fork)
-6. [@savetheinternet](https://github.com/savetheinternet) (2010 - 2014) (The creator of Tinyboard)
 
 Requirements
 ------------
