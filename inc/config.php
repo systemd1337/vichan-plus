@@ -405,13 +405,13 @@
 	);
 
 	//max threads per hour
-	$config['filters'][] = array(
-		'condition' => array(
-			'custom' => 'check_thread_limit'
-		),
-		'action' => 'reject',
-		'message' => &$config['error']['too_many_threads']
-	);
+//	$config['filters'][] = array(
+	//	'condition' => array(
+	//		'custom' => 'check_thread_limit'
+	//	),
+	//	'action' => 'reject',
+//		'message' => &$config['error']['too_many_threads']
+//	);
 
 	// Example: Minimum time between posts with the same file hash.
 	// $config['filters'][] = array(
@@ -656,7 +656,7 @@
 
 	// Allow dice rolling: an email field of the form "dice XdY+/-Z" will result in X Y-sided dice rolled and summed,
 	// with the modifier Z added, with the result displayed at the top of the post body.
-	$config['allow_roll'] = false;
+	$config['allow_roll'] = true;
 
 	// Use semantic URLs for threads, like /b/res/12345/daily-programming-thread.html
 	$config['slugify'] = false;
