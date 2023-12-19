@@ -1,16 +1,14 @@
-/*
- * hide-threads.js
- * https://github.com/savetheinternet/Tinyboard/blob/master/js/hide-threads.js
- *
- * Released under the MIT license
- * Copyright (c) 2013 Michael Save <savetheinternet@tinyboard.org>
- * Copyright (c) 2013-2014 Marcin Łabanowski <marcin@6irc.net>
- *
- * Usage:
- *   $config['additional_javascript'][] = 'js/jquery.min.js';
- *   $config['additional_javascript'][] = 'js/hide-threads.js';
- *
- */
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
 
 $(document).ready(function(){
 	if (active_page != "index" && active_page != "ukko")
@@ -35,53 +33,120 @@ $(document).ready(function(){
 			}
 		}
 	}
-
 	var fields_to_hide = 'div.file,div.post,div.video-container,video,iframe,img:not(.unanimated),canvas,p.fileinfo,a.hide-thread-link,div.new-posts,br';
 	
 	var do_hide_threads = function() {
-		var id = $(this).children('p.intro').children('a.post_no:eq(1)').text();
-		var thread_container = $(this).parent();
+		var id = $(this).attr('id').replace('thread_', '');
+		var thread_container = $(this);
 
 		var board = thread_container.data("board");
 
 		if (!hidden_data[board]) {
-			hidden_data[board] = {}; // id : timestamp
+			hidden_data[board] = {}; // id : timThis thread has been hidden.mp
 		}
 	
-		$('<a class="hide-thread-link" style="float:left;margin-right:5px" href="javascript:void(0)">[–]</a><span> </span>')
+		$('<a class="hide-thread-link" style="float: right;font-size: 10px;margin-right: 4px;" href="javascript:void(0)">Hide Thread</a><span> </span>')
 			.insertBefore(thread_container.find(':not(h2,h2 *):first'))
 			.click(function() {
 				hidden_data[board][id] = Math.round(Date.now() / 1000);
 				store_data();
 				
-				thread_container.find(fields_to_hide).hide();
-				
-				var hidden_div = thread_container.find('div.post.op > p.intro').clone();
-				hidden_div.addClass('thread-hidden');
-				hidden_div.find('a[href]:not([href$=".html"]),input').remove();
-				hidden_div.html(hidden_div.html().replace(' [] ', ' '));
-				hidden_div.html(hidden_div.html().replace(' [] ', ' '));
-				
-				$('<a class="unhide-thread-link" style="float:left;margin-right:5px;margin-left:0px;" href="javascript:void(0)">[+]</a><span> </span>')
-					.insertBefore(hidden_div.find(':first'))
-					.click(function() {
-						delete hidden_data[board][id];
-						store_data();
-						thread_container.find(fields_to_hide).show();
-						thread_container.find(".hidden").hide();
-						$(this).remove();
-						hidden_div.remove();
-					});
-				
-				hidden_div.insertAfter(thread_container.find(':not(h2,h2 *):first'));
+				// Ocultar el contenedor del hilo y mostrar el mensaje de hilo oculto
+				thread_container.hide();
+				var hidden_div = $('<div class="hidden-thread-msg" style="font-size: 14px; text-shadow: 1px 1px 1px #000; font-weight: bold; margin-left: 30px; margin-bottom: 0px; color: #D0D0D0;">This thread has been hidden. <a href="javascript:void(0)" style="float: right;font-size: 10px;margin-right: 4px;" class="show-thread-link">Show thread</a></div><hr>');
+				thread_container.after(hidden_div);
+				hidden_div.find('.show-thread-link').click(function() {
+					delete hidden_data[board][id];
+					store_data();
+					
+					// Mostrar el contenedor del hilo y ocultar el mensaje de hilo oculto
+					thread_container.show();
+					hidden_div.remove();
+				});
 			});
-		if (hidden_data[board][id])
-			thread_container.find('.hide-thread-link').click();
+		
+		if (hidden_data[board][id]) {
+			// Ocultar el contenedor del hilo y mostrar el mensaje de hilo oculto con el enlace "Show thread"
+			thread_container.hide();
+			var hidden_div = $('<div class="hidden-thread-msg" style="font-size: 14px; text-shadow: 1px 1px 1px #000; font-weight: bold; margin-left: 30px; margin-bottom: 0px; color: #D0D0D0;">This thread has been hidden. <a href="javascript:void(0)" style="float: right;font-size: 10px;margin-right: 4px;" class="show-thread-link">Show thread</a></div><hr>');
+			thread_container.after(hidden_div);
+			hidden_div.find('.show-thread-link').click(function() {
+				delete hidden_data[board][id];
+				store_data();
+				
+				// Mostrar el contenedor del hilo y ocultar el mensaje de hilo oculto
+				thread_container.show();
+				hidden_div.remove();
+			});
+		}
 	}
 
-	$('div.post.op').each(do_hide_threads);
+	$('div[id^="thread_"]').each(function() {
+		do_hide_threads.call(this);
+	});
 
 	$(document).on('new_post', function(e, post) {
 		do_hide_threads.call($(post).find('div.post.op')[0]);
 	});
 });
+
+$(document).ready(function() {
+
+	if (!localStorage.hiddenthreads)
+	  localStorage.hiddenthreads = '{}';
+  
+	// Load data from HTML5 localStorage
+	var hidden_data = JSON.parse(localStorage.hiddenthreads);
+  
+	var store_data = function() {
+	  localStorage.hiddenthreads = JSON.stringify(hidden_data);
+	};
+  
+	// Delete old hidden threads (7+ days old)
+	for (var key in hidden_data) {
+	  for (var id in hidden_data[key]) {
+		if (hidden_data[key][id] < Math.round(Date.now() / 1000) - 60 * 60 * 24 * 7) {
+		  delete hidden_data[key][id];
+		  store_data();
+		}
+	  }
+	}
+  
+	var do_hide_threads = function() {
+	  var thread_container = $(this);
+	  var hideButton = thread_container.find('.ignorebtn');
+	  var pBodyContainer = thread_container.find('.pBody');
+	  var hiddenMessage = $('<p style="font-size: 14px; text-shadow: 1px 1px 1px #000; font-weight: bold; margin-left: 30px; margin-bottom: 0px; color: #D0D0D0;">Esta respuesta se ha ocultado</p>');
+  
+	  hideButton.click(function() {
+		pBodyContainer.toggle();
+		if (pBodyContainer.is(':visible')) {
+		  hiddenMessage.remove();
+		  // Remove the thread from hidden_data
+		  delete hidden_data[thread_container.attr('id')];
+		} else {
+		  thread_container.append(hiddenMessage);
+		  // Add the thread to hidden_data
+		  hidden_data[thread_container.attr('id')] = Math.round(Date.now() / 1000);
+		}
+		store_data(); // Save the updated hidden_data to localStorage
+	  });
+  
+	  // Restore thread visibility based on hidden_data
+	  if (hidden_data[thread_container.attr('id')]) {
+		pBodyContainer.hide();
+		thread_container.append(hiddenMessage);
+	  }
+	};
+  
+	// ...
+  
+	$('div[id^="reply_"]').each(function() {
+	  do_hide_threads.call(this);
+	});
+  
+	// ...
+  });
+  
+
+}
