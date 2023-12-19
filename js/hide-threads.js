@@ -45,7 +45,7 @@ $(document).ready(function(){
 			hidden_data[board] = {}; // id : timThis thread has been hidden.mp
 		}
 	
-		$('<a class="hide-thread-link" style="float: right;font-size: 10px;margin-right: 4px;" href="javascript:void(0)">Hide Thread</a><span> </span>')
+		$('<a class="hide-thread-link" style="float: right;font-size: 10px;margin-right: 4px;" href="javascript:void(0)"><img class="close" style="margin-bottom: -3px;" src="/static/close.png"></a><span> </span>')
 			.insertBefore(thread_container.find(':not(h2,h2 *):first'))
 			.click(function() {
 				hidden_data[board][id] = Math.round(Date.now() / 1000);
