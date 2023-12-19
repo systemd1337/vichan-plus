@@ -56,7 +56,7 @@ var List = function (menuId, text) {
 				$ele.addClass('post-submenu');
 
 				$ele.prepend(obj.list_items());
-				$ele.append($('<span>', {class: 'post-menu-arrow'}).text('»'));
+				$ele.append($('<a class="hide-thread-link" style="float: right;font-size: 10px;margin-right: 4px;" href="javascript:void(0)"><img class="close" style="margin-bottom: -3px;" src="/static/close.png"></a><span> </span>', {class: 'post-menu-arrow'}).text('»'));
 			}
 
 			array.push($ele);
@@ -105,7 +105,7 @@ function buildMenu(e) {
 function addButton(post) {
 	var $ele = $(post);
 	$ele.find('input.delete').after(
-		$('<a>', {href: '#', class: 'post-btn', title: 'Post menu'}).text('▶')
+		$('<a>', {href: '#', class: 'post-btn fa fa-bars', title: 'Post menu'}).text('')
 	);
 }
 
