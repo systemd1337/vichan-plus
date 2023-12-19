@@ -69,33 +69,23 @@
 				{{ antibot.html() }}
         
         
-        
-        
-        
-        
-        
         			  <input type="button" name="b" value="Bold" onclick="this.form.body.value=this.form.body.value.concat('[b][/b]');">
 			  <div style="display:none;"></div>
 			  
 			  <input type="button" name="i" value="Italic" onclick="this.form.body.value=this.form.body.value.concat('[i][/i]');">
 			  <div style="display:none;"></div>
 			  
-			  <input type="button" name="spoiler" value="Spoiler" onclick="this.form.body.value=this.form.body.value.concat('[spoiler][/spoiler]');">
+			  <input type="button" name="spoiler" value="Spoiler" onclick="this.form.body.value=this.form.body.value.concat('** **');">
 			  <div style="display:none;"></div>
 			  
-			  <input type="button" name="pre" value="Pre" onclick="this.form.body.value=this.form.body.value.concat('[pre][/pre]');">
+			  <input type="button" name="redtext" value="redtext" onclick="this.form.body.value=this.form.body.value.concat('== ==');">
 			  <div style="display:none;"></div>
 			  
-			  <input type="button" name="strike" value="Strike" onclick="this.form.body.value=this.form.body.value.concat('[s][/s]');">
-			  <div style="display:none;"></div>
-			  
-			  <input type="button" name="super" value="Super" onclick="this.form.body.value=this.form.body.value.concat('[super][/super]');">
-			  <div style="display:none;"></div>
-			  
-			  <input type="button" name="sub" value="Sub" onclick="this.form.body.value=this.form.body.value.concat('[sub][/sub]');">
+			  <input type="button" name="Echos" value="Echos" onclick="this.form.body.value=this.form.body.value.concat('(((  )))');">
 			  <div style="display:none;"></div>
         
-        
+        <input type="button" name="Rainbow" value="Rainbow" onclick="this.form.body.value=this.form.body.value.concat('[rainbow] [/rainbow]');">
+			  <div style="display:none;"></div>
         
         
         
@@ -197,7 +187,12 @@
 				{% trans %}File{% endtrans %}
 			</th>
 			<td>
+      
+      
+      
 				<input type="file" name="file" id="upload_file">
+        	<input style="margin-left: 23px;" type="checkbox" id="d100Checkbox" name="d100Checkbox" onchange="toggleTextField()"> [Roll Dice?]
+
 
 				<script type="text/javascript">if (typeof init_file_selector !== 'undefined') init_file_selector({{ config.max_images }});</script>
 
