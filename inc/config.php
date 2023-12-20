@@ -1481,14 +1481,14 @@
 
 	// "## Mod" makes everything purple, including the name and tripcode:
 	$config['custom_capcode']['Mod'] = array(
-		'<span style="display: inline-block; font-size: 80 font-weight: normal; background: #4B0082	; color: #ffffff; padding: 2px 5px 2px 5px; margin-left: 2px; margin-right: 2px; margin-bottom: 2px; border-radius: 4px;}color:purple">## Mod</span>',
+		'<span style="display: inline-block; font-weight: normal; background: #4B0082; color: #ffffff; padding: 2px 5px 2px 5px; margin-left: 2px; margin-right: 2px; margin-bottom: 2px; border-radius: 4px; color:white;">## Mod</span>',
 		'color:purple', // Change name style; optional
 		'color:purple' // Change tripcode style; optional
 	);
 
 	// "## Admin" makes everything red and bold, including the name and tripcode:
 	$config['custom_capcode']['Admin'] = array(
-		'<span style="display: inline-block; font-size: 80 font-weight: normal; background: #6CB4EE; color: #ffffff; padding: 2px 5px 2px 5px; margin-left: 2px; margin-right: 2px; margin-bottom: 2px; border-radius: 4px;}color:blue">## Administrator</span>',
+		'<span style="display: inline-block; font-weight: normal; background: #6CB4EE; color: #ffffff; padding: 2px 5px 2px 5px; margin-left: 2px; margin-right: 2px; margin-bottom: 2px; border-radius: 4px; color:blue;">## Administrator</span>',
 		'color:blue;font-weight:bold', // Change name style; optional
 		'color:blue;font-weight:bold' // Change tripcode style; optional
 	);
