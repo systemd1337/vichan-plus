@@ -45,30 +45,61 @@ We try to make sure vichan is compatible with all major web servers. vichan does
 
 Contributing
 ------------
-You can contribute to vichan by:
+You can contribute to vichan-plus by:
 *	Developing patches/improvements/translations and using GitHub to submit pull requests
 *	Providing feedback and suggestions
 *	Writing/editing documentation
 
 Installation
 -------------
-1.	Get the latest development version with:
+1.	Get the latest development version & install to your web server directory with:
+   
+        git clone git://github.com/systemd1337/vichan-plus
+3.  For Debian based operating systems, install the required packages:
 
-        git clone git://github.com/vichan-devel/vichan.git
+        sudo apt install php7.4-mysql, php7.4-mbstring, php7.4-redis, php7.4-imagick, php7.4-igbinary, php7.4-gmp, php7.4-bcmath, php7.4-curl, php7.4-gd, php7.4-zip, php7.4-imap, php7.4-ldap, php7.4-bz2, php7.4-ssh2, php-phpseclib, php7.4-common, php7.4-json, php7.4-xml, php7.4-dev, libsmbclient-dev, php-pear
 
-2.	run ```composer install``` inside the directory	
-3.	Navigate to ```install.php``` in your web browser and follow the
+4.	run ```composer install``` inside the vichan-plus directory	
+5.	Navigate to ```install.php``` in your web browser and follow the
 	prompts.
-4.	vichan should now be installed. Log in to ```mod.php``` with the
+6.	vichan should now be installed. Log in to ```mod.php``` with the
 	default username and password combination: **admin / password**.
 
 Please remember to change the administrator account password.
 
 See also: [Configuration Basics](https://github.com/vichan-devel/vichan/wiki/config).
 
+*Optionally, enable additional JavaScript by adding the following definitions to `inc/instance-config.php`*:
+```js
+$config['additional_javascript'][] = 'js/jquery.min.js';
+$config['additional_javascript'][] = 'js/mobile-style.js';
+$config['additional_javascript'][] = 'js/download-original.js';
+$config['additional_javascript'][] = 'js/expand-all-images.js';
+$config['additional_javascript'][] = 'js/expand-too-long.js';
+$config['additional_javascript'][] = 'js/ajax.js';
+$config['additional_javascript'][] = 'js/post-hover.js';
+$config['additional_javascript'][] = 'js/quick-reply.js';
+$config['additional_javascript'][] = 'js/show-backlinks.js';
+$config['additional_javascript'][] = 'js/show-own-posts.js';
+$config['additional_javascript'][] = 'js/thread-stats.js';
+$config['additional_javascript'][] = 'js/jquery-ui.custom.min.js';
+$config['additional_javascript'][] = 'js/show-backlinks.js';
+$config['additional_javascript'][] = 'js/wPaint/8ch.js';
+$config['additional_javascript'][] = 'js/wpaint.js';
+$config['additional_javascript'][] = 'js/upload-selection.js';
+$config['additional_javascript'][] = 'js/options.js';
+$config['additional_javascript'][] = 'js/local-time.js';
+$config['additional_javascript'][] = 'js/charcount.js';
+$config['additional_javascript'][] = 'js/hide-threads.js';
+$config['additional_javascript'][] = 'js/post-menu.js';
+$config['additional_javascript'][] = 'js/fix-report-delete-submit.js';
+$config['additional_javascript'][] = 'js/style-select.js';
+$config['additional_javascript'][] = 'js/options/general.js';
+```
+
 Upgrade
 -------
-To upgrade from any version of Tinyboard or vichan:
+To upgrade from any version of vichan-plus:
 
 Either run ```git pull``` to update your files, if you used git, or
 backup your ```inc/instance-config.php```, replace all your files in place
@@ -88,7 +119,7 @@ Demo with the most updated version of [Vichan](https://vichan.27chan.org).
 
 Support
 --------
-vichan is still beta software -- there are bound to be bugs. If you find a
+vichan-plus is still beta software -- there are bound to be bugs. If you find a
 bug, please report it.
 
 CLI tools
