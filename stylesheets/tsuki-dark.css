@@ -1,0 +1,353 @@
+@import url('https://fonts.cdnfonts.com/css/chivo-mono');
+@import url('https://fonts.cdnfonts.com/css/flexi-ibm-vga-true');
+@import url('https://fonts.cdnfonts.com/css/flexi-ibm-vga-false');
+
+header>h1, .blotter, .redheader {
+	font-family: 'Flexi IBM VGA True (437)', sans-serif;
+	
+	transform: scale(1.3)
+}
+
+.barheader {
+	font-family: 'Flexi IBM VGA True (437)', sans-serif;
+	font-size: 30px !important;
+}
+
+body {
+	background: #090d0f url('') repeat-x 50% 0%;
+	font-family: 'Chivo Mono', sans-serif;
+	color: white;
+}
+
+div.banner {background-color:#4173b5;}
+
+form table tr th {
+	background: #6894ff;
+	color:#041;
+	border-color:#041;
+}
+
+div.post.reply {
+	background-color:#d6dcf0;
+	border-color:#3F51B5;
+}
+
+div.post.reply.highlighted {
+	background-color:#d6d0ba;
+	border-color:#3F51B5;
+}
+
+hr, img.banner, img.board_image {border-color:#C1D9B7;}
+
+.intro span.name {letter-spacing: 1px; color:#d63e34 !important;}
+.intro a.email span.name {color:#d63e34 !important;}
+.intro span.subject {color:#b88cd1 !important;}
+
+a, a:visited {color: #36335b;}
+a:hover {color:#e04000;}
+
+div.boardlist, div.pages {
+	color: #999;
+	background: linear-gradient(rgb(28,32,35),rgba(13,17,20,0.9)) !important;
+	padding: 5px;
+}
+
+span.quote{color:#3F51B5;}
+
+
+div.pages {background: #3f51b512;border: none;font-size: 0pt;}
+
+div.pages form input {display: none;}
+
+div.pages a {font-size: 10pt;text-decoration: none;margin-left: -1px;line-height: 1.6;position: relative;float: left;
+
+background: #3f51b557;color: var(--a1-color);border-radius: 3px;border: 1px solid var(--other-color);padding: 5px 15px;margin: 2px;}
+
+div.pages a.selected, div.pages a.selected:hover {transition: all 0.1s;border: 0;color: var(--replyborder-color) !important;border: 1px solid var(--replyborder-color);background: var(--body-color);pointer-events: none;}
+
+div.pages a:hover {opacity: 1;transition: all 0.1s;color: var(--a2-color) !important;border: 0px solid var(--other-color);background: var(--body-color);}
+
+
+.desktop-style div.boardlist:not(.bottom), .desktop-style div.boardlist:not(.bottom):hover, .desktop-style div.boardlist:not(.bottom).cb-menu {
+	position: fixed;text-align: left;left: 0;right: 0;margin: auto;z-index: 4;line-height: 1em;
+	background: var(--other-color);
+	color:#444;
+	font-size: 15px;
+	padding: 4px 5px;
+}
+
+div.boardlist>span>a {
+	color: white;
+}
+
+
+div.boardlist.bottom {display: none;}
+
+div.boardlist a {color: var(--a3-color);background-color: transparent;}
+
+
+
+div.post.reply::before {
+    content: ">>";
+    position: absolute;
+    margin-left: -27px;
+}
+
+.fileinfo>.unimportant {
+	opacity: 0.1;
+	font-size: 8px;
+}
+
+#quick-reply table {
+	background-color: #111518;
+	border: 1px solid #333;
+}
+
+.fileinfo>.unimportant>a, .fileinfo>.unimportant>span>a {
+	font-size: 8px;
+}
+
+.post-btn {
+	color: #458671;
+	padding-right: 5px;
+}
+
+
+.unimportant:hover {
+	opacity: 1;
+}
+
+div.post.reply div.body a {
+	color: #21a5b3;
+}
+
+
+
+.post-menu {
+	
+}
+
+.post-item {
+	padding: 10px;
+	background-color: #555;
+}
+
+.post-item:hover {
+	color: black;
+}
+
+
+/* Front page */
+body {
+	font-family: 'Inconsolata', monospace;
+}
+
+h1 {
+	font-family: 'Inconsolata', monospace;
+	letter-spacing: 0.2px;
+}
+
+#front-page-logo {
+	max-width: 320px;
+	max-height: 320px;
+	width: 20vw;
+	height: 20vw;
+}
+
+div.container.narrow {
+	margin-top: 15px;
+	background-color: #111518;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2.barheader {
+	border: 1px solid black;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	background-color: #00000011;
+	padding: 10px;
+	text-align: center;
+}
+
+.box > ul,
+.box.left,
+.box.right {
+	background-color: #111518;
+	border: none
+}
+
+.box.left > h2,
+.box.right > h2 {
+	color: white;
+	text-align: center;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+	background: linear-gradient(to bottom, #2980b9, #2980b9);
+
+}
+
+#options_div {
+	border: 1px solid #333;
+}
+
+.box.left {
+	text-align: center;
+}
+
+a {
+	color: #22c7d9;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #22c7d9;
+}
+
+a:hover {
+	color: #0c5a62;
+}
+
+/* Boards */
+.image_id {
+	margin-left: 5px;
+}
+
+hr {
+	border-color: black;
+	opacity: 0.0;
+}
+
+.box.right {
+	color: white;
+}
+
+div.post.reply {
+	background-color: #111518;
+	border: 1px solid #111518;
+	padding-right: 20px;
+}
+
+div.post.reply:hover {
+	box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.01);
+}
+
+div.post.reply::before {
+	content: '';
+}
+
+div.post.reply.highlighted {
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+	border: 1px solid red;
+	background-color: #111518;
+}
+
+.omitted {
+	font-style: italic;
+	opacity: 0.8;
+}
+
+.controls {
+	opacity: 0.2;
+}
+
+.controls:hover {
+	opacity: 1;
+}
+
+input:not([type="file"]), textarea, select {
+	color: white;
+	background-color: #0f161a;
+	border: 1px solid #131d22;
+	padding: 3px;
+	margin: 2px;
+}
+
+form table input[type="submit"] {
+	color: white;
+	font-weight: bold;
+	border-radius: 0px;
+	border: 1px solid #444;
+	background: linear-gradient(to bottom, #3498db, #2980b9);
+}
+
+form table input[type="submit"]:hover {
+	box-shadow: 0 0px 10px rgba(255, 255, 255, 0.1);
+	background: #555;
+}
+
+input[type="button"]:hover {
+	background-color: #444;
+}
+
+span.trip {
+	color: #d63e34 !important;
+	font-weight: normal;
+}
+
+span.quote {
+	color: #5cf25c;
+}
+
+div.banner {
+	padding: 0px;
+
+}
+
+form > table > tbody > tr > th,
+.banner {
+	background: linear-gradient(to bottom, #2980b9, #2980b9);
+
+	color: white;
+	font-weight: bold;
+}
+
+.banner {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+header > h1 {
+	font-weight: bold;
+}
+
+div.pages.top {
+	margin-top: 28px;
+}
+
+div.pages.top, div.pages {
+	padding: 0px;
+	padding-left: 2px;
+	padding-right: 2px;
+	background-color: #090d0f;
+	border: 1px solid #333;
+}
+
+div.pages.top>a, div.pages>a {
+	background-color: inherit;
+	border: 0px;
+	border-radius: 0px;
+}
+
+div.pages.top>a:hover, div.pages>a:hover {
+	background-color: #555;
+}
+
+div.pages.top>a.selected, div.pages>a.selected {
+	color: red;
+	background-color: inherit;
+	background-color: #111518;
+	border-radius: 0px;
+}
+
+div.report {
+	color: white;
+}
+
+/* Moderation panel */
+fieldset {
+	background-color: #10181c;
+	border: 1px solid #333;
+}
+
+fieldset > legend {
+	font-weight: bold;
+}
