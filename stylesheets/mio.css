@@ -244,3 +244,27 @@ fieldset {
 fieldset > legend {
 	font-weight: bold;
 }
+
+/*
+	Changing button styling to match with Mio theme.
+	TODO: Button styling for file upload is still browser default.
+*/
+input[type="button"], input[type="submit"], button {
+	color: white;
+	background-color: #6156a7;
+	border: none;
+	padding: 2px 6px;
+	border-radius: 2px;
+	margin: 0px 2px;
+}
+
+input[type="text"], input[type="number"], textarea, select {
+	color: black;
+	border: 1px solid #6156a7;
+	border-radius: 2px;
+	background-color: #d9e1f4;
+}
+
+/* Spacing for hamburger menu beside posters name. */
+.post-btn {
+	padding-right: 7px;
