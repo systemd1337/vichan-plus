@@ -1006,7 +1006,7 @@
 	// Use Font-Awesome for displaying lock and pin icons, instead of the images in static/.
 	// http://fortawesome.github.io/Font-Awesome/icon/pushpin/
 	// http://fortawesome.github.io/Font-Awesome/icon/lock/
-	$config['font_awesome'] = true;
+	$config['font_awesome'] = false;
 	$config['font_awesome_css'] = 'stylesheets/font-awesome/css/font-awesome.min.css';
 
 	/*
@@ -1347,11 +1347,11 @@
 	// $config['image_blank'] = 'static/blank.gif';
 
 	// Static images. These can be URLs OR base64 (data URI scheme). These are only used if
-	// $config['font_awesome'] is false (default).
-	// $config['image_sticky']	= 'static/sticky.png';
-	// $config['image_locked']	= 'static/locked.gif';
-	// $config['image_bumplocked']	= 'static/sage.png';
-	// $config['image_cyclical']	= 'static/cycle.png';
+	 $config['font_awesome'] = false;
+	 $config['image_sticky']	= '/sticky.png';
+	 $config['image_locked']	= '/locked.gif';
+	 $config['image_bumplocked']	= '/sage.png';
+   $config['image_cyclical']	= '/cyclic.png';
 
 	// If you want to put images and other dynamic-static stuff on another (preferably cookieless) domain.
 	// This will override $config['root'] and $config['dir']['...'] directives. "%s" will get replaced with
