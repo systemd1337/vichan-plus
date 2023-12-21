@@ -91,7 +91,6 @@ $config['additional_javascript'][] = 'js/options.js';
 $config['additional_javascript'][] = 'js/local-time.js';
 $config['additional_javascript'][] = 'js/charcount.js';
 $config['additional_javascript'][] = 'js/hide-threads.js';
-$config['additional_javascript'][] = 'js/post-menu.js';
 $config['additional_javascript'][] = 'js/fix-report-delete-submit.js';
 $config['additional_javascript'][] = 'js/style-select.js';
 $config['additional_javascript'][] = 'js/options/general.js';
