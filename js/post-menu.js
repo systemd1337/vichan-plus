@@ -105,7 +105,7 @@ function buildMenu(e) {
 function addButton(post) {
 	var $ele = $(post);
 	$ele.find('input.delete').after(
-		$('<a>', {href: '#', class: 'post-btn fa fa-bars', title: 'Post menu'}).text('')
+		$('<a>', {href: '#', class: 'post-btn fa fa-bars', title: 'Post menu'}).text('☰')
 	);
 }
 
