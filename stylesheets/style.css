@@ -1280,23 +1280,6 @@ p.fileinfo {
     margin-left: 5px;
 }
 
-/*.fileinfo {
-    max-width: calc(-10px + 210px);
-    word-wrap: break-word;
-    word-break: break-all;
-    margin-left: 8px;
-}
-
-.file:not(.multifile) {
-    float: left;
-}
-
-.file {
-    float: left;
-    margin-right: 5px;
-    margin-top: 8px;
-}
-*/
 div.post.reply::before {
     content: ">>";
     position: absolute;
