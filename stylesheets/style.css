@@ -1246,15 +1246,6 @@ div.mix {
 }
 
 
-div.pages {
-    background: rgb(170, 170, 204);
-    color: #716E80;
-    display: inline-block;
-    padding: 8px;
-    margin: 8px 0 4px 0;
-    border-right: 1px solid #B7C5D9;
-    border-bottom: 1px solid #B7C5D9;
-}
 
 
 div.post.reply::before {
