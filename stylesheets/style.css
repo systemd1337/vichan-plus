@@ -1225,3 +1225,22 @@ table.fileboard .intro a {
 div.mix {
 	display: inline-block;
 }
+
+@keyframes rainbow {
+  0% { background-position: 0% 0; }
+  100% { background-position: -100% 0; }
+}
+.rainbow {
+  background: linear-gradient(90deg,
+      #ff0000, #ffa600, #fff500, #06ff00, #00c9ff, #2300ff, #ff00fa,
+      #ff0000, #ffa600, #fff500, #06ff00, #00c9ff, #2300ff, #ff00fa,
+      #ff0000, #ffa600, #fff500, #06ff00, #00c9ff, #2300ff, #ff00fa
+  );
+  background-size: 300% auto;
+  color: #000;
+  background-clip: text;
+  /* chrome needs this */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow 1s linear infinite;
+}
