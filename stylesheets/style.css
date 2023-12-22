@@ -1247,15 +1247,6 @@ div.mix {
 
 
 
-
-div.post.reply::before {
-    content: ">>";
-    position: absolute;
-    margin-left: -27px;
-}
-
-
-
 .omitted {
     color: #666666;
 }
@@ -1280,11 +1271,6 @@ p.fileinfo {
     margin-left: 5px;
 }
 
-div.post.reply::before {
-    content: ">>";
-    position: absolute;
-    margin-left: -27px;
-}
 
 div.pages {background: #3f51b512;border: none;font-size: 0pt;}
 
