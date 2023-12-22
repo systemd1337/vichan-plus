@@ -94,7 +94,11 @@ $config['additional_javascript'][] = 'js/hide-threads.js';
 $config['additional_javascript'][] = 'js/fix-report-delete-submit.js';
 $config['additional_javascript'][] = 'js/style-select.js';
 $config['additional_javascript'][] = 'js/options/general.js';
-$config['additional_javascript'][] = 'js/post-menu.js';
+$config['additional_javascript'][] = 'js/multi-image.js';
+
+$config['thumb_ext'] = '';
+$config['thumb_keep_animation_frames'] = 300;
+$config['thumb_method'] = 'convert+gifsicle';
 ```
 
 Upgrade
