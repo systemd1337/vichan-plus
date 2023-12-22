@@ -95,6 +95,7 @@ $config['additional_javascript'][] = 'js/fix-report-delete-submit.js';
 $config['additional_javascript'][] = 'js/style-select.js';
 $config['additional_javascript'][] = 'js/options/general.js';
 $config['additional_javascript'][] = 'js/multi-image.js';
+$config['additional_javascript'][] = 'js/post-menu.js';
 
 $config['thumb_ext'] = '';
 $config['thumb_keep_animation_frames'] = 300;
