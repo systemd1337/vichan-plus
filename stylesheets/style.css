@@ -1302,3 +1302,40 @@ div.post.reply::before {
     position: absolute;
     margin-left: -27px;
 }
+
+div.pages {background: #3f51b512;border: none;font-size: 0pt;}
+
+div.pages form input {display: none;}
+
+div.pages a {font-size: 10pt;text-decoration: none;margin-left: -1px;line-height: 1.6;position: relative;float: left;
+
+background: #3f51b557;color: var(--a1-color);border-radius: 3px;border: 1px solid var(--other-color);padding: 5px 15px;margin: 2px;}
+
+div.pages a.selected, div.pages a.selected:hover {transition: all 0.1s;border: 0;color: var(--replyborder-color) !important;border: 1px solid var(--replyborder-color);background: var(--body-color);pointer-events: none;}
+
+div.pages a:hover {opacity: 1;transition: all 0.1s;color: var(--a2-color) !important;border: 1px solid var(--other-color);background: var(--body-color);}
+
+form table input[type="submit"] {
+  height: auto;
+  margin-left:2px;
+  border: solid 0px #52789e;
+  border-radius : 3px;
+  moz-border-radius : 3px;
+  font-size : 13px;
+  color : #ffffff;
+  padding : 3px 9px;
+  background-color: #3F51B5;
+  cursor: pointer;
+  margin-left: 5px;
+  padding: px 10px 9px 10px;
+}
+
+
+input[type="text"],input[type="password"],textarea {
+  border: 1px solid #a9a9a9;
+  text-indent: 0;
+  text-shadow: none;
+  text-transform: none;
+  word-spacing: normal;
+  max-width: 100%;
+}
