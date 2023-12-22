@@ -1347,6 +1347,7 @@
 	// $config['image_blank'] = 'static/blank.gif';
 
 	// Static images. These can be URLs OR base64 (data URI scheme). These are only used if
+        // make sure to point the imageboard in the root dir or else these won't work
 	 $config['font_awesome'] = false;
 	 $config['image_sticky']	= '/sticky.png';
 	 $config['image_locked']	= '/locked.gif';
