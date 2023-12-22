@@ -1244,3 +1244,70 @@ div.mix {
   -webkit-text-fill-color: transparent;
   animation: rainbow 1s linear infinite;
 }
+
+
+div.pages {
+    background: rgb(170, 170, 204);
+    color: #716E80;
+    display: inline-block;
+    padding: 8px;
+    margin: 8px 0 4px 0;
+    border-right: 1px solid #B7C5D9;
+    border-bottom: 1px solid #B7C5D9;
+}
+
+
+div.post.reply::before {
+    content: ">>";
+    position: absolute;
+    margin-left: -27px;
+}
+
+
+
+.omitted {
+    color: #666666;
+}
+
+div.post p.fileinfo {
+    padding-left: 0;
+}
+
+div.post.reply div.body {
+    margin-left: 25px;
+    margin-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
+
+div.post.reply p {
+    margin: 0.3em 3px -5px 5px;
+}
+
+p.fileinfo {
+    margin-left: 5px;
+}
+
+/*.fileinfo {
+    max-width: calc(-10px + 210px);
+    word-wrap: break-word;
+    word-break: break-all;
+    margin-left: 8px;
+}
+
+.file:not(.multifile) {
+    float: left;
+}
+
+.file {
+    float: left;
+    margin-right: 5px;
+    margin-top: 8px;
+}
+*/
+div.post.reply::before {
+    content: ">>";
+    position: absolute;
+    margin-left: -27px;
+}
